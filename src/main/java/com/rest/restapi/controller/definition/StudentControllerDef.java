@@ -36,4 +36,10 @@ public interface StudentControllerDef {
 
     @RequestMapping("/get-student/{name}/{location}")
     ResponseEntity<List<Student>> getStudentByNameOrLocation(@PathVariable String name, @PathVariable String location);
+
+
+    @RequestMapping("/find-all-student")
+    ResponseEntity<List<Student>> findAllStudent();
+
+
 }

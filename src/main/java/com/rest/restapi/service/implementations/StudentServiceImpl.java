@@ -65,4 +65,10 @@ public class StudentServiceImpl implements StudentService {
 
         return this.studentRepository.getStudentByStudentNameAndLocation(name,location);
     }
+
+    @Override
+    public List<Student> findAllStudent() {
+
+        return (List<Student>) this.studentRepository.findAll(Sort.by("age"));
+    }
 }

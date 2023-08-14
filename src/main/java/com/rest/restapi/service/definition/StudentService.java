@@ -21,4 +21,6 @@ public interface StudentService {
     List<Student> getAll(int pageNumber, int pageNo);
 
     List<Student> getStudentByStudentNameOrLocation(String name, String location);
+
+    List<Student> findAllStudent();
 }
