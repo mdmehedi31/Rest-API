@@ -63,4 +63,10 @@ public class StudentControllerImp implements StudentControllerDef {
 
         return new ResponseEntity<List<Student>>(service.getAll(pageNumber,pageNo),HttpStatus.OK);
     }
+
+    @Override
+    public ResponseEntity<List<Student>> getStudentByNameOrLocation(String name, String location) {
+
+        return new ResponseEntity<List<Student>>(service.getStudentByStudentNameOrLocation(name,location), HttpStatus.OK);
+    }
 }

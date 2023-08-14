@@ -59,4 +59,10 @@ public class StudentServiceImpl implements StudentService {
         Pageable pages= PageRequest.of(pageNumber,pageNo, Sort.Direction.ASC,"stdId");
                 return this.studentRepository.findAll(pages).getContent();
     }
+
+    @Override
+    public List<Student> getStudentByStudentNameOrLocation(String name, String location) {
+
+        return this.studentRepository.getStudentByStudentNameAndLocation(name,location);
+    }
 }

@@ -19,4 +19,6 @@ public interface StudentService {
     List<Student> getByStudentNameKeyword(String name);
 
     List<Student> getAll(int pageNumber, int pageNo);
+
+    List<Student> getStudentByStudentNameOrLocation(String name, String location);
 }
