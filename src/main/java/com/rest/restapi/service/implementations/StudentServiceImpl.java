@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student getByStId(Long stId) {
 
-        return this.studentRepository.findById(stId);
+     return (Student) this.studentRepository.findByStdId(stId);
     }
 
     @Override
@@ -76,6 +76,13 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAllStudent() {
 
         return (List<Student>) this.studentRepository.findAll(Sort.by("age"));
+    }
+
+    @Override
+    public List<Student> findByDeptName(String name) {
+
+
+        return (List<Student>) this.studentRepository.findByDeptId(name);
     }
 
     @Override

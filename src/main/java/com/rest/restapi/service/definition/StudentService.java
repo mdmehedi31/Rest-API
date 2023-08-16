@@ -2,9 +2,12 @@ package com.rest.restapi.service.definition;
 
 import com.rest.restapi.dto.request.StudentRequest;
 import com.rest.restapi.entity.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Service
 public interface StudentService {
 
     Student createStudent(StudentRequest student);
@@ -24,6 +27,8 @@ public interface StudentService {
     List<Student> getStudentByStudentNameOrLocation(String name, String location);
 
     List<Student> findAllStudent();
+
+    List<Student> findByDeptName(String name);
 
     Integer deleteByStudentName(String name);
 

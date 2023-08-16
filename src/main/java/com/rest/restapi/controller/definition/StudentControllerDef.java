@@ -46,4 +46,8 @@ public interface StudentControllerDef {
     @RequestMapping("/delete/{name}")
     ResponseEntity<String> deleteByStudentName(@PathVariable String name);
 
+
+    @RequestMapping("/get-by-dept/{deptName}")
+    ResponseEntity<List<Student>> findByDeptName(@PathVariable String deptName);
+
 }
