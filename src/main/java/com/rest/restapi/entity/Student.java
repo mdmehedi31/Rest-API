@@ -39,4 +39,8 @@ public class Student {
     @UpdateTimestamp
     @Column(name = "update_at")
     private Date updateDate;
+
+    @JoinColumn(name = "deptID")
+    @OneToOne
+    private Department deptId;
 }

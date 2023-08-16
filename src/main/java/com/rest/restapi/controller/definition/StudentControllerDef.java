@@ -1,6 +1,7 @@
 package com.rest.restapi.controller.definition;
 
 
+import com.rest.restapi.dto.request.StudentRequest;
 import com.rest.restapi.entity.Student;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public interface StudentControllerDef {
 
 
     @RequestMapping("/create")
-    ResponseEntity<Student> createStudent(@Valid @RequestBody Student student);
+    ResponseEntity<Student> createStudent(@Valid @RequestBody StudentRequest studentRequest);
 
     @RequestMapping("/get-by-id/{stId}")
     ResponseEntity<Student> getStudentById(@PathVariable Long stId);
@@ -41,5 +42,8 @@ public interface StudentControllerDef {
     @RequestMapping("/find-all-student")
     ResponseEntity<List<Student>> findAllStudent();
 
+
+    @RequestMapping("/delete/{name}")
+    ResponseEntity<String> deleteByStudentName(@PathVariable String name);
 
 }

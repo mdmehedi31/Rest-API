@@ -1,12 +1,13 @@
 package com.rest.restapi.service.definition;
 
+import com.rest.restapi.dto.request.StudentRequest;
 import com.rest.restapi.entity.Student;
 
 import java.util.List;
 
 public interface StudentService {
 
-    Student createStudent(Student student);
+    Student createStudent(StudentRequest student);
 
     Student getByStId(Long stId);
 
@@ -23,4 +24,8 @@ public interface StudentService {
     List<Student> getStudentByStudentNameOrLocation(String name, String location);
 
     List<Student> findAllStudent();
+
+    Integer deleteByStudentName(String name);
+
+    Student dtoToEntity(StudentRequest studentRequest);
 }

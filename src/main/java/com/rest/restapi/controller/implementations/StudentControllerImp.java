@@ -1,6 +1,7 @@
 package com.rest.restapi.controller.implementations;
 
 import com.rest.restapi.controller.definition.StudentControllerDef;
+import com.rest.restapi.dto.request.StudentRequest;
 import com.rest.restapi.entity.Student;
 import com.rest.restapi.service.definition.StudentService;
 
@@ -22,7 +23,7 @@ public class StudentControllerImp implements StudentControllerDef {
     private StudentService service;
 
     @Override
-    public ResponseEntity<Student> createStudent(Student student) {
+    public ResponseEntity<Student> createStudent(StudentRequest student) {
         return new ResponseEntity<>(this.service.createStudent(student), HttpStatus.CREATED);
     }
 
@@ -74,5 +75,11 @@ public class StudentControllerImp implements StudentControllerDef {
     public ResponseEntity<List<Student>> findAllStudent() {
 
         return new ResponseEntity<List<Student>>(service.findAllStudent(),HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<String> deleteByStudentName(String name) {
+
+        return new ResponseEntity<String>(service.deleteByStudentName(name)+" No. student is deleted", HttpStatus.OK);
     }
 }

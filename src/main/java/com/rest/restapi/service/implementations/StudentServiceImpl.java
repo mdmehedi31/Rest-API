@@ -1,6 +1,9 @@
 package com.rest.restapi.service.implementations;
 
+import com.rest.restapi.Repository.DepartmentRepository;
 import com.rest.restapi.Repository.StudentRepository;
+import com.rest.restapi.dto.request.StudentRequest;
+import com.rest.restapi.entity.Department;
 import com.rest.restapi.entity.Student;
 import com.rest.restapi.service.definition.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -18,11 +22,13 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
 
     @Override
-    public Student createStudent(Student student) {
-        return this.studentRepository.save(student);
+    public Student createStudent(StudentRequest student) {
+        return this.studentRepository.save(dtoToEntity(student));
     }
 
     @Override
@@ -70,5 +76,30 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAllStudent() {
 
         return (List<Student>) this.studentRepository.findAll(Sort.by("age"));
+    }
+
+    @Override
+    public Integer deleteByStudentName(String name) {
+
+        return this.studentRepository.deleteByStudentName(name);
+    }
+
+    @Override
+    public Student dtoToEntity(StudentRequest studentRequest) {
+
+        Department department= new Department();
+        department.setName(studentRequest.getDepartment());
+
+        department=departmentRepository.save(department);
+
+        Student student= new Student();
+        student.setStudentName(studentRequest.getStudentName());
+        student.setEmail(studentRequest.getEmail());
+        student.setLocation(studentRequest.getLocation());
+        student.setAge(studentRequest.getAge());
+        student.setDeptId(department);
+        student.setCreateDate(new Date());
+
+        return student;
     }
 }
